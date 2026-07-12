@@ -1,0 +1,62 @@
+[
+    {
+        "title": "General Setting",
+        "route": "admin.setting.general",
+        "icon": "setting",
+        "active": "admin.setting.general"
+    },
+    {
+        "title": "System Configuration",
+        "route": "admin.setting.configuration",
+        "icon": "cog",
+        "active": "admin.setting.configuration"
+    },
+    {
+        "title": "Global SEO",
+        "route": "admin.setting.global_seo.index",
+        "icon": "trending-up",
+        "active": "admin.setting.global_seo.*"
+    },
+    {
+        "title": "Server Information",
+        "route": "admin.setting.server.information",
+        "icon": "server",
+        "active": "admin.setting.server.information"
+    },
+    {
+        "title": "Notifications",
+        "route": "admin.setting.notification",
+        "icon": "bell",
+        "active": "admin.setting.notification"
+    },
+    {
+        "title": "Languages",
+        "route": "admin.setting.language.list",
+        "icon": "list",
+        "active": "admin.setting.language.*"
+    },
+    {
+        "title": "Social Login Providers",
+        "route": "admin.setting.social_login.list",
+        "icon": "shield-user",
+        "active": "admin.setting.social_login.*"
+    },
+    {
+        "title": "Integrations",
+        "route": "admin.setting.integration.list",
+        "icon": "blocks",
+        "active": "admin.setting.integration.*"
+    },
+    {
+        "title": "Cron Jobs",
+        "route": "admin.setting.cronjob.list",
+        "icon": "alarm-clock",
+        "active": "admin.setting.cronjob.*"
+    },
+    {
+        "title": "Forms",
+        "route": "admin.setting.form.index",
+        "icon": "notebook-pen",
+        "active": "admin.setting.form.*"
+    }
+]

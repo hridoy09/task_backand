@@ -1,0 +1,1 @@
+@php echo $formContent @endphp
