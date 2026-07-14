@@ -13,6 +13,8 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/auth/logout', 'Auth\LoginController@logout')->name('login');
+
 Route::post('/complete-profile', 'ProfileCompleteController');
 
     Route::middleware('profile.complete')->group(function () {
