@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('feeds', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->enum('type', ['text', 'photo', 'video', 'event', 'article'])->default('text');
+            $table->text('body')->nullable();
+            $table->string('media_path')->nullable();
+            $table->string('media_type')->nullable(); // image|video
+            $table->dateTime('event_date')->nullable();
+            $table->enum('privacy', ['public', 'friends', 'private'])->default('public');
+            $table->unsignedInteger('comments_count')->default(0);
+            $table->unsignedInteger('shares_count')->default(0);
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('feeds');
+    }
+};
