@@ -17,6 +17,7 @@ class RegisterController extends Controller
             'last_name'  => ['required', 'string', 'max:255'],
             'email'      => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'   => ['required', 'string', 'confirmed'],
+            'agree'=>['required'],
         ]);
 
         $user = User::create([
@@ -25,6 +26,7 @@ class RegisterController extends Controller
             'name'       => $data['first_name'] . ' ' . $data['last_name'],
             'email'      => $data['email'],
             'password'   => Hash::make($data['password']),
+            'pc'=> 1,
         ]);
 
         $token = $user->createToken('user-token')->plainTextToken;

@@ -135,6 +135,11 @@ RoutesHelper::registerAdminRoutes(function () {
         Route::post('/kyc-data/{id}/approve', 'kycApprove')->name('kyc.approve');
     });
 
+    Route::controller('FeedController')->prefix('/feeds')->name('feed.')->group(function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/details/{id}', 'details')->name('details');
+    });
+
     Route::controller('AdminsController')->prefix('/admins')->name('admin.')->group(function () {
         Route::get('/', 'list')->name('list');
         Route::get('/create', 'create')->name('create');

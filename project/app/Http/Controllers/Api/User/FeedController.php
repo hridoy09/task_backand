@@ -11,7 +11,7 @@ class FeedController extends Controller
 {
     public function index(Request $request)
     {
-        $feeds = Feed::with('user:id,name,image')
+        $feeds = Feed::with(['user:id,name,image', 'likedByUsers:id,name,image'])
             ->visibleTo(auth()->id())
             ->latest()
             ->paginate(20);
@@ -29,7 +29,7 @@ class FeedController extends Controller
         $request->validate([
             'type'       => 'required|in:text,photo,video,event,article',
             'body'       => 'nullable|string',
-            'media'      => 'nullable|file|max:51200',
+            'media'      => 'nullable|file',
             'event_date' => 'nullable|required_if:type,event|date',
             'privacy'    => 'nullable|in:public,friends,private',
         ]);
@@ -53,13 +53,13 @@ class FeedController extends Controller
             'status'  => 'success',
             'note'    => 'feed_created',
             'message' => 'Post created successfully',
-            'feed'    => $feed->load('user:id,name,image'),
+            'feed'    => $feed->load(['user:id,name,image', 'likedByUsers:id,name,image']),
         ]);
     }
 
     public function show($id)
     {
-        $feed = Feed::with('user:id,name,image')->findOrFail($id);
+        $feed = Feed::with(['user:id,name,image', 'likedByUsers:id,name,image'])->findOrFail($id);
 
         abort_if($feed->privacy !== 'public' && $feed->user_id !== auth()->id(), 403, 'This post is not accessible to you.');
 
@@ -99,7 +99,7 @@ class FeedController extends Controller
             'status'  => 'success',
             'note'    => 'feed_updated',
             'message' => 'Post updated successfully',
-            'feed'    => $feed->load('user:id,name,image'),
+            'feed'    => $feed->load(['user:id,name,image', 'likedByUsers:id,name,image']),
         ]);
     }
 

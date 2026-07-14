@@ -34,7 +34,8 @@ class User extends Authenticatable
         'country',
         'phone_number',
         'image_path',
-        'kyc_verified'
+        'kyc_verified',
+        'pc',
     ];
 
     /**

@@ -27,5 +27,10 @@ Route::post('/complete-profile', 'ProfileCompleteController');
             Route::post('/feeds/detail/{id}', 'update')->name('feeds.update');
             Route::delete('/feeds/destroy/{id}', 'destroy')->name('feeds.destroy');
         });
+
+        Route::controller('FeedLikeController')->group(function () {
+            Route::post('/feeds/like/{id}', 'like')->name('feeds.like');
+            Route::post('/feeds/unlike/{id}', 'unlike')->name('feeds.unlike');
+        });
     });
 });

@@ -87,6 +87,13 @@
                         </ul>
                     </div>
                 </li>
+
+                <li class="sidebar-menu-list__item {{ activeClass('admin.feed.*') }}">
+                    <a href="{{ route('admin.feed.list') }}" class="sidebar-menu-list__link">
+                        <span class="icon"><x-icons.newspaper /></span>
+                        <span class="text">@lang('Feeds')</span>
+                    </a>
+                </li>
             @endif
 
             {{-- SUPPORT --}}
